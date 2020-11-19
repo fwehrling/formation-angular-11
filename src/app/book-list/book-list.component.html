@@ -1,0 +1,10 @@
+<p>{{ msg }}</p>
+
+<div>
+  {{ book.title }}
+  <button (click)="onDeleteBook(book.id)" (mouseover)="onMouseOver()">
+    Supprimer
+  </button>
+  <button (click)="onShowDetailBook(book.id)">Afficher</button>
+  <!-- <button routerLink="['/book', book.id]">Afficher</button> -->
+</div>

@@ -1,0 +1,31 @@
+<h2>Se conecter</h2>
+<form (ngSubmit)="register()" #formUser="ngForm">
+  <div>
+    <label>UserName</label
+    ><input
+      name="username"
+      [(ngModel)]="user.username"
+      required
+      #username="ngModel"
+    />
+  </div>
+  <div *ngIf="username.dirty && username.invalid">Username est obligatoire</div>
+  <div>
+    <label>Password</label
+    ><input
+      type="password"
+      name="password"
+      [(ngModel)]="user.password"
+      required
+      minlength="6"
+      #password="ngModel"
+    />
+  </div>
+  <div *ngIf="password.dirty">
+    <div *ngIf="password.hasError('required')">Password est obligatoire</div>
+    <div *ngIf="password.hasError('minlength')">
+      Password doit contenir au moins 6 caractères
+    </div>
+  </div>
+  <button type="submit" [disabled]="formUser.invalid">Valider</button>
+</form>

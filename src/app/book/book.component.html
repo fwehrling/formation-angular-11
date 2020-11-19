@@ -1,0 +1,110 @@
+<input [value]="valeurInitiale" />
+<br />
+<select>
+  <option>Option 1</option>
+  <option>Option 2</option>
+  <option [selected]="isSelected">Option 3</option>
+  <option>Option 4</option>
+  <option>Option 5</option>
+</select>
+<br />
+<div [hidden]="isHidden">
+  {{ valeurInitiale }}
+</div>
+<br />
+<p [style.color]="foreground">Texte avec une couleur</p>
+<br />
+<button
+  [style.color]="foreground"
+  [disabled]="isDisabled"
+  (click)="onClickButton()"
+>
+  Cliquer ici
+</button>
+<br />
+<div (click)="onClickDiv()">
+  <button (click)="onClickDivButton($event)">Button</button>
+</div>
+<br />
+<textarea
+  cols="30"
+  rows="10"
+  (keydown.shift.space)="onKeydownSpace()"
+></textarea>
+<br />
+<input #name />
+{{ name.value }}
+<button (click)="name.focus()">Focus sur l'input</button>
+<br />
+<input type="text" #myinput />
+<button (click)="onClickMyInput(myinput.value)">Valider</button>
+<br />
+<div [ngStyle]="{ 'fontSize.px': fontSize, fonWeight: 'bold', color: 'red' }">
+  Un texte exemple pour ngStyle
+</div>
+<button (click)="onMoins()">-</button>
+<button (click)="onPlus()">+</button>
+<br />
+<div [ngClass]="{ a: stateColor, b: stateWidth, c: stateHeight }">
+  J'utilise ngClass
+</div>
+<button (click)="onClickColor()">Color {{ stateColor ? "On" : "Off" }}</button>
+<button (click)="onClickWidth()">Width {{ stateWidth ? "On" : "Off" }}</button>
+<button (click)="onClickHeight()">
+  Heigth {{ stateHeight ? "On" : "Off" }}
+</button>
+<br />
+<ng-template [ngIf]="stateColor">
+  <h1>COUCOU</h1>
+</ng-template>
+<br />
+<h2 *ngIf="stateHeight; else stateHeightOff">La proprié height est à ON</h2>
+<ng-template #stateHeightOff>
+  <h2>La propriété height est à OFF</h2>
+</ng-template>
+<br />
+{{ books | slice: 0:2 | json }}
+<br />
+{{ bookAsJson }}
+<ul>
+  <li
+    appHighLight="yellow"
+    [ngClass]="{ first: f, last: l, even: e, odd: o }"
+    *ngFor="
+      let book of books;
+      let i = index;
+      let e = even;
+      let o = odd;
+      let f = first;
+      let l = last
+    "
+  >
+    {{ i }} - {{ book.title | titlecase }}; pair: {{ e }}; impair: {{ o }};
+    premier: {{ f }}; dernier: {{ l }} <button (click)="voir(i)">Voir</button>
+    <button (click)="deleteBook(i)">Supprimer</button>
+  </li>
+</ul>
+<br />
+<div [ngSwitch]="books.length" appHighLight="green">
+  <p *ngSwitchCase="0">Aucun livre</p>
+  <p *ngSwitchCase="1">1 livre</p>
+  <p *ngSwitchCase="2">2 livres</p>
+  <p *ngSwitchDefault>Plus de 2 livres</p>
+</div>
+{{ 12345 | number: "6.2" }}
+<br />
+{{ 0.8 | percent: ".3" }}
+<br />
+{{ 10.6 | currency: "EUR":"symbol":".3" }}
+<br />
+{{ "2020-11-18" | date: "longDate" }}
+<br />
+{{ "2020-11-18 13:19" | date: "HH:mm" }}
+<br />
+{{ asyncTest | async }}
+<br />
+{{ "1945-04-29" | fromNow }}
+<br />
+{{ "Un nouveau texte à transformer" | changeTexte }}
+<br />
+<br />

@@ -1,0 +1,7 @@
+<app-book-list
+  *ngFor="let book of books | async"
+  [bookAttribute]="book"
+  customInput="je suis un custom input"
+  (deleteBook)="onDeleteBook($event)"
+  (customMouseOver)="onMouseOver($event)"
+></app-book-list>

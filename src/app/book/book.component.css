@@ -1,0 +1,33 @@
+div {
+    border: blueviolet 1px solid;
+    width: 80px;
+    height: 80px;
+}
+
+.a {
+    color: green;
+}
+
+.b {
+    width: 200px;
+}
+
+.c {
+    height: 300px;
+}
+
+.first {
+    color: green;
+}
+
+.even {
+    background-color: rgb(161, 159, 159);
+}
+
+.odd {
+    background-color: rgb(56, 53, 53);
+}
+
+.last { 
+    color: hotpink;
+}

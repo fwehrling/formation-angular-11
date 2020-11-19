@@ -1,0 +1,56 @@
+<h2>Se connecter</h2>
+resultat : {{ resultAvailable }}
+<br />
+<form (ngSubmit)="register()" [formGroup]="userForm">
+  <div>
+    <label>Username</label><input type="text" formControlName="username" />
+    <div *ngIf="usernameCtrl.dirty">
+      <div *ngIf="usernameCtrl.hasError('required')">
+        Username est obligatoire
+      </div>
+      <div *ngIf="usernameCtrl.hasError('alreadyused')">
+        Le username n'est pas dispobible
+      </div>
+    </div>
+  </div>
+  <div formGroupName="pwdForm">
+    <div>
+      <label>Password</label
+      ><input type="password" formControlName="password" />
+      <div *ngIf="passwordCtrl.dirty">
+        <div *ngIf="passwordCtrl.hasError('required')">
+          Password est obligatoire
+        </div>
+        <div *ngIf="passwordCtrl.hasError('minlength')">
+          Password doit contenir au moins 6 caractères
+        </div>
+      </div>
+    </div>
+    <div>
+      <label>Confirmation du password</label>
+      <input type="password" formControlName="confirm" />
+      <div *ngIf="confirmCtrl.dirty">
+        <div *ngIf="confirmCtrl.hasError('required')">
+          Confirmation du password est obligatoire
+        </div>
+      </div>
+    </div>
+    <div *ngIf="pwdForm.dirty">
+      <div *ngIf="pwdForm.hasError('matchinError')">
+        Le password ne correspond pas
+      </div>
+    </div>
+  </div>
+  <div>
+    <label>Brithdate</label>
+    <input type="date" formControlName="birthdate" />
+    <div *ngIf="birthdateCtrl.dirty">
+      <div *ngIf="birthdateCtrl.hasError('required')">
+        Birth date est obligatoire
+      </div>
+      <div *ngIf="birthdateCtrl.hasError('tooYoung')">Vous êtes trop jeune</div>
+    </div>
+  </div>
+  <button type="submit" [disabled]="userForm.invalid">Register</button>
+  <button (click)="onReset()">Reset</button>
+</form>
